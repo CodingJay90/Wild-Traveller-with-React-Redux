@@ -27,7 +27,7 @@ const LocationDetails = (props) => {
 
   useEffect(() => {
     dispatch(getSpecificLocations(item._id))
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="LocationDetails">
@@ -91,14 +91,19 @@ const LocationDetails = (props) => {
                     )}
                   </div>
                   <div className="text">
-                    <h4>{data.author.username}</h4>
+                    <h4>{data.author.username} {currentUser &&  currentUser._id === data.author.id && '(You)'} </h4>
                     <p>{data.text}</p>
-                    <FaEllipsisV
-                      onClick={() => setCommentToggle(!commentToggle)}
-                    />
+                    {/* {compare comment author } */
+                      currentUser &&  currentUser._id === data.author.id ? (
+                        <FaEllipsisV
+                          onClick={() => setCommentToggle(!commentToggle)}
+                        />
+                      ) :
+                      null
+                    }
                     <hr />
                   </div>
-                  {commentToggle && (
+                  {currentUser && commentToggle && currentUser._id === data.author.id ? (
                     <span className="button">
                       <button
                         className={commentToggle ? "comment-btn btn-default" : "none"}
@@ -112,12 +117,15 @@ const LocationDetails = (props) => {
                       </button>
                       <button
                         className={commentToggle ? "comment-btn btn-danger" : "none"}
-                        onClick={() => dispatch(deleteComment(item._id, data._id))}
+                        onClick={() => {
+                          dispatch(deleteComment(item._id, data._id))
+                          window.location.reload()
+                          }}
                       >
                         Delete
                       </button>
                     </span>
-                  )}
+                  ) : null }
                 </div>
               </div>
             );

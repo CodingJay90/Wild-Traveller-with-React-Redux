@@ -177,16 +177,19 @@ export const createComment = (id, text) => (dispatch, getState) => {
     });
 };
 
-export const deleteComment = (id, commentId) => dispatch => {
+export const deleteComment = (id, commentId) => (dispatch, getState) => {
   fetch(`${baseUrl}/${id}/comment/${commentId}`, {
     method: "DELETE",
+    headers: {
+      Authorization: getState().auth.token,
+    },
   })
     .then((res) => res.json())
     .then((data) => {
       console.log(id);
       console.log(data);
       if (data.error) {
-        console.log(data.error)
+        console.log(data.error);
       } else {
         dispatch({
           type: DELETE_COMMENT,
@@ -208,22 +211,23 @@ export const getSpecificComment = (id, commentId) => dispatch => {
   })
 }
 
-export const updateComment = (id, commentId, text) => dispatch => {
+export const updateComment = (id, commentId, text) => (dispatch, getState) => {
   fetch(`${baseUrl}/${id}/comment/${commentId}`, {
-    method: 'PUT',
-    body: JSON.stringify({text}),
+    method: "PUT",
+    body: JSON.stringify({ text }),
     headers: {
-      "Content-type": "Application/json"
-    }
+      "Content-type": "Application/json",
+      Authorization: getState().auth.token,
+    },
   })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-    dispatch({
-      type: UPDATE_COMMENT,
-      payload: data
-    })
-  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      dispatch({
+        type: UPDATE_COMMENT,
+        payload: data,
+      });
+    });
 }
 
 export const setItemsLoading = () => {
