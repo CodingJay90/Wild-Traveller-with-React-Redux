@@ -1,0 +1,49 @@
+.Home .showcase {
+    height: 95vh;
+    background: url(https://www.w3schools.com/w3images/mac.jpg);
+    
+}
+.Home .showcase h1 {
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+    padding: 1em;
+    font-size: 5em;
+}
+
+.Home .showcase h2{
+    color: #fff;
+    text-align: left;
+    margin-left: 2em;
+}
+
+.Home .jumbotron {
+    background: rgb(0, 0, 0);
+}
+
+.Home .section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Home .section {
+    margin: 1rem;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 4px;
+    color: #111;
+    font-weight: bolder;
+    font-family: helvetica;
+}
+
+.Home .section .item-group.explore h4{
+    margin-bottom: 5.4rem;
+}
+
+.Home .section .item-group.explore {
+    padding: 1.4rem;
+}
+
+.Home .section img {
+    border-radius: 7px;
+}

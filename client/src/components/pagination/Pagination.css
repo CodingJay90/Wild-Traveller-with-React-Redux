@@ -1,0 +1,32 @@
+.Pagination {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.Pagination ul.pagination {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.Pagination li.page-item {
+    list-style-type: none;
+    margin: 0 3px;
+    font-size: 1.7em;
+    color: rgb(80, 223, 208);
+    border: 1px solid rgb(42, 189, 194);
+    padding: 10px 12px;
+    transition: 150ms linear;
+    border-radius: 3px;
+}
+
+.Pagination li.page-item:hover {
+    background: turquoise;
+    cursor: pointer;
+}
+
+.Pagination a.page-link {
+    text-align: center;
+    color: rgb(43, 43, 223);
+}

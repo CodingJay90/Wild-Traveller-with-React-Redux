@@ -1,0 +1,30 @@
+.LocationItem hr.sep-2 {
+  margin: 1rem auto;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0,
+    #00b9ff,
+    #59d941,
+    #f0f0f0
+  );
+}
+
+.LocationItem .container img {
+  border-radius: 5px;
+  max-height: 200px;
+}
+
+.LocationItem .container .item {
+  text-align: center;
+  transition: 250ms ease;
+  padding: 1.3rem;
+  margin: 0;
+}
+
+.LocationItem .container .item:hover {
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.164),
+    1px 2px 4px rgba(0, 0, 0, 0.336);
+}

@@ -1,0 +1,150 @@
+.LocationDetails {
+    margin-top: 4.5em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 81%;
+    margin: 4.5rem auto;
+}
+
+.LocationDetails .container {
+    width: 80%;
+    max-width: 80%;
+    margin: 10em auto;
+    background: #f8f6f6;
+}
+
+.LocationDetails .image img {
+    width: 60%;
+    height: 50%;
+    margin: 2rem 15rem;
+    border-radius: 7px;
+    margin-bottom: 0;
+    position: relative;
+    margin-left: 12rem;
+}
+
+.LocationDetails .comment img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.LocationDetails .details {
+    text-align: center;
+    font-weight: 1.4em;
+    padding: 2rem;
+    margin: 2rem;
+    margin-top: 0;
+    max-width: 80%;
+    overflow-x: scroll;
+}
+
+.LocationDetails .details h1 {
+    margin-bottom: 3rem;
+    max-width: 80%;
+    text-align: center;
+}
+
+.LocationDetails hr.sep-2 {
+  margin: 3rem auto;
+  border: 0; 
+  height: 1px; 
+  background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);
+}
+
+.LocationDetails .btn-controller {
+    position: absolute;
+    top: 200px;
+    right: 400px;
+    color: #011b1d;
+    cursor: pointer;
+}
+
+.LocationDetails span.options {
+    margin: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    /* position: absolute;
+    top: 100px;
+    left: 100px; */
+    left: -20%;
+    top: 50%;
+    cursor: pointer;
+}
+
+.LocationDetails span.options.btn {
+    display: block;
+    align-items: flex-end;
+}
+
+.LocationDetails span.button {
+    margin: 1rem 2rem;
+    display: block;
+}
+
+.LocationDetails span.button .btn-danger {
+    margin: 2rem;
+}
+
+.LocationDetails span.options .none {
+    display: none;
+    visibility: hidden;
+}
+
+.LocationDetails span.button .comment-btn.btn-danger {
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.comment-btn.btn-default {
+    padding: 7px;
+    border-radius: 5px;
+}
+
+/* COMMENTS */
+.LocationDetails .comment-container .comment {
+    display: flex;
+    justify-content: left;
+    margin-left: 2.7rem;
+}
+
+.LocationDetails .comment-container .comment .text {
+    background: linear-gradient(to right, #f0f0f0, #f0f0f0);
+    /* display: flex; */
+    padding: 0 2rem;
+    margin-left: 1.2rem;
+    margin-top: 0;
+    border-radius: 5px;
+    max-width: 50%;
+    min-width: 30%;
+}
+
+.LocationDetails .comment-container .comment hr {
+     background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+     border: 0;
+     height: 1px;
+     /* margin-top: 2rem; */
+}
+
+.LocationDetails .comment-input {
+    display: flex;
+    justify-content: space-around;
+}
+
+.LocationDetails .comment-input input {
+    padding: 1rem;
+    margin: 1rem;
+    position: sticky;
+    width: 50%;
+    bottom: 0;
+    z-index: 3;
+}
+
+.LocationDetails .comment-input button {
+    position: sticky;
+    bottom: 0;
+}
