@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { loginUser } from '../../../redux/actions/authAction';
-import './Register.css'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { clearError, loginUser } from "../../../redux/actions/authAction";
+import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,14 +11,18 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const error = useSelector(state => state.auth.errMsg)
-  console.log(error.message)
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const error = useSelector(
+    (state) => state.auth.errMsg !== "" && state.auth.errMsg
+  );
+  const success = useSelector((state) => state.auth.success);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  console.log(error);
 
-  const toastError = () =>
+  const toastError = () => {
     toast(error.message, {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -27,8 +31,9 @@ const Login = () => {
       progress: undefined,
       className: "Toastify__toast--error",
     });
+  };
 
-  const toastSuccess = () =>
+  const toastSuccess = () => {
     toast(`Welcome`, {
       position: "top-right",
       autoClose: 3000,
@@ -39,21 +44,29 @@ const Login = () => {
       progress: undefined,
       className: "Toastify__toast--success",
     });
+  };
 
-  const onChange = (e) => setValue({ ...value, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setValue({ ...value, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if(value.email !== '' && value.password !== '') {
-      history.push('/')
-      dispatch(loginUser(value))
-      toastSuccess()
+    e.preventDefault();
+    if (value.email !== "" && value.password !== "" && success === false) {
+      dispatch(loginUser(value));
+      toastSuccess();
+    } else {
+      dispatch(loginUser(value));
+      setTimeout(() => {
+        dispatch(clearError());
+      }, 1000);
+      console.log("action needed");
     }
-    else {
-      toastError()
-      dispatch(loginUser(value))
-      console.log('action needed')
-    }
+  };
+  if (!success) {
+    toastError();
+  }
+  if (isAuthenticated !== null) {
+    history.push("/");
   }
   return (
     <div className="Signup">
@@ -91,6 +104,6 @@ const Login = () => {
       />
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

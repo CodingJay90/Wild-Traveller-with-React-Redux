@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { registerUser } from '../../../redux/actions/authAction';
+import { clearError, registerUser } from '../../../redux/actions/authAction';
 import './Register.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
     const [value, setValue] = useState({
@@ -14,13 +16,52 @@ const Register = () => {
     const dispatch = useDispatch()
     const history = useHistory();
 
+    //SELECTORS
+    const isAuthenticated =useSelector(state => state.auth.isAuthenticated)
+    const error = useSelector(state => state.auth.errMsg)
+    const success = useSelector(state => state.auth.success)
+
+    const toastError = () => {
+      toast(error.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        className: "Toastify__toast--error",
+      });
+    };
+
+    const toastSuccess = () => {
+      toast(`Sign up succcessfull`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        className: "Toastify__toast--success",
+      });
+    };
+
     const onChange = (e) => setValue({ ...value, [e.target.name]: e.target.value });
     const handleSubmit = (e) => {
-        e.preventDefault()
+      e.preventDefault()
+      if(isAuthenticated === null) {
         dispatch(registerUser(value))
-        console.log(value)
-        history.push("/explore");
+        setTimeout(() => {
+          dispatch(clearError())
+        }, 1000);
+      }
     }
+    if(isAuthenticated !== null) {
+      history.push("/explore");
+      toastSuccess()
+    }
+    if(!success) toastError()
     
     return (
         <div className="Signup">
@@ -38,6 +79,18 @@ const Register = () => {
             <button className="btn btn-warning">Register</button>
           </form>
         </div>
+        <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        bodyClassName="white"
+        progressClassName="Toastify__progress-bar--dark"
+      />
       </div>
     )
 }

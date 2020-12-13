@@ -15,6 +15,9 @@ router.post("/register", async (req, res) => {
     .catch((err) => console.log(err));
 
   try {
+    if(email === '', username === '', password === '') return res.status(400).json({ success: false, message: 'Input all fields' });
+    const foundEmail = await User.findOne({email})
+    // if(foundEmail.email === email) return res.status(400).json({ success: false, message: 'A user with the given email is already registered' });
     const newUser = await User.create({
       email,
       avatar,
@@ -44,7 +47,7 @@ router.post('/login', async (req, res) => {
       foundUser.password
     );
     if (!validatePassword) {
-      return res.json({success: false, message: "Invalid Credentials. Password do not match" });
+      return res.json({success: false, message: "Invalid Credentials. Password does not match" });
     }
     const token = jwt.sign({ id: foundUser._id, username: foundUser.username }, "secret key");
     res.status(200).json({success: true, token, user: foundUser})

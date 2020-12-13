@@ -23,6 +23,7 @@ export const LOGIN_USER = 'LOGIN_USER'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
 export const USER_LOADED = 'USER_LOADED'
 export const USER_LOADED_FAIL = 'USER_LOADED_FAIL'
+export const CLEAR_ERROR = 'CLEAR_ERROR'
 
 //ERROR TYPES
 export const LOCATION_ERROR = 'LOCATION_ERROR'

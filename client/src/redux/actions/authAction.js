@@ -5,6 +5,7 @@ import {
   REGISTER_USER_FAIL,
   USER_LOADED,
   USER_LOADED_FAIL,
+  CLEAR_ERROR
 } from "./actionTypes";
 
 export const registerUser = (user) => (dispatch) => {
@@ -81,3 +82,10 @@ export const loadUser = () => (dispatch, getState) => {
       });
     });
 };
+
+export const clearError = () => dispatch => {
+  dispatch({
+    type: CLEAR_ERROR
+  })
+}
+

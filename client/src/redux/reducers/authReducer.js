@@ -1,4 +1,5 @@
 import {
+  CLEAR_ERROR,
   LOGIN_USER,
   LOGIN_USER_FAIL,
   REGISTER_USER,
@@ -12,6 +13,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   errMsg: "",
   currentUser: null,
+  success: null
 };
 
 export default function (state = initialState, action) {
@@ -24,6 +26,7 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         token: action.payload.token,
         errMsg: "",
+        success: null,
         currentUser: action.payload.user.username,
       };
     case USER_LOADED_FAIL:
@@ -40,6 +43,7 @@ export default function (state = initialState, action) {
         isAuthenticated: null,
         token: null,
         errMsg: action.payload,
+        success: false
       };
     }
     case USER_LOADED: {
@@ -47,6 +51,13 @@ export default function (state = initialState, action) {
         ...state,
         currentUser: action.payload,
       };
+    }
+    case CLEAR_ERROR: {
+      return {
+        ...state,
+        success: null,
+        errMsg: ''
+      }
     }
     default:
       return state;
