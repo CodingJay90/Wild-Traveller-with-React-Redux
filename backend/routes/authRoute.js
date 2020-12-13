@@ -34,16 +34,17 @@ router.post("/register", async (req, res) => {
 router.post('/login', async (req, res) => {
    try {
     const foundUser = await User.findOne({ email: req.body.email });
+    if(req.body.email === '') return res.json({success: false, message:"Email field cannot be empty"});
     if (!foundUser) {
       console.log("User not found");
-      return res.json({success: false, message:"User not found"});
+      return res.json({success: false, message:"A user with the given email do not exist"});
     }
     const validatePassword = await bcrypt.compare(
       req.body.password,
       foundUser.password
     );
     if (!validatePassword) {
-      return res.json({success: false, error: "Invalid Credentials. Password do not match" });
+      return res.json({success: false, message: "Invalid Credentials. Password do not match" });
     }
     const token = jwt.sign({ id: foundUser._id, username: foundUser.username }, "secret key");
     res.status(200).json({success: true, token, user: foundUser})

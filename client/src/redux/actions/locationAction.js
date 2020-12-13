@@ -60,7 +60,7 @@ export const addLocation = (newData) => (dispatch, getState) => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      if (data.error) {
+      if (data.success === false) {
         dispatch({
           type: LOCATION_ERROR,
           payload: data,

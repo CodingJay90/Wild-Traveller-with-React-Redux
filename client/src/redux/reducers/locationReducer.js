@@ -62,6 +62,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         location: [...state.location, action.payload],
+        error: null
       };
     }
     case UPDATE_LOCATION: {

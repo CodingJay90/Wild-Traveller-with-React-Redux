@@ -26,8 +26,13 @@ export default function (state = initialState, action) {
         errMsg: "",
         currentUser: action.payload.user.username,
       };
-    case LOGIN_USER_FAIL:
     case USER_LOADED_FAIL:
+      return {
+        ...state,
+        isAuthenticated: null,
+        token: null,
+      };
+    case LOGIN_USER_FAIL:
     case REGISTER_USER_FAIL: {
       localStorage.removeItem("token");
       return {

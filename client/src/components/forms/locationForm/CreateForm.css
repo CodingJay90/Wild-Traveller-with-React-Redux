@@ -1,6 +1,6 @@
 .CreateForm .container {
     margin-top: 5rem;
-    width: 75%;
+    width: 50%;
     margin: 10rem auto;
     padding: 2rem;
     background: #eeeff1c5;
@@ -46,6 +46,15 @@
     background:linear-gradient(to right, gold, rgb(233, 205, 50));
     border: none;
     margin: 0 auto;
+}
+
+/* Toastify */
+.white {
+    color: #fff;
+}
+
+.Toastify__progress-bar {
+    color: white;
 }
 
 

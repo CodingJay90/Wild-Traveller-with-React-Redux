@@ -10,6 +10,8 @@ import {
   sortLocation,
   sortLocationByDateCreated,
 } from "../../redux/actions/locationAction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Explore = (props) => {
   const data = useSelector((state) => state.location.location);
@@ -45,11 +47,26 @@ const Explore = (props) => {
   //Change Page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  //Toast message
+  const toastError = () =>
+    toast("You are unauthenticated, You need to be logged in to view places", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: "Toastify__toast--error",
+    });
+
   useEffect(() => {
     if (!token) {
-      alert("Unauthenticated, you need to be logged in to view places");
       console.log("no token found");
-      history.push("/login");
+      toastError()
+      setTimeout(() => {
+        history.push("/login");
+      }, 2000);
     }
     setLocation(data);
   }, [location, history, dispatch, data, currentPosts, token]);
@@ -90,7 +107,7 @@ const Explore = (props) => {
         <hr />
       </div>
       <div className="grid">
-        {!isLoading ? (
+        {!isLoading && token ? (
           <Location item={handleFilter(currentPosts)} />
         ) : (
           <h1>Loading....</h1>
@@ -101,6 +118,18 @@ const Explore = (props) => {
         totalPosts={location.length}
         paginate={paginate}
         currentPage={currentPage}
+      />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        bodyClassName="white"
+        progressClassName="Toastify__progress-bar--dark"
       />
     </div>
   );

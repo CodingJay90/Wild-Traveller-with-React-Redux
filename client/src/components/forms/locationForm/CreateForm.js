@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addLocation } from "../../../redux/actions/locationAction";
 import "./CreateForm.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateForm = () => {
   const [value, setValue] = useState({
@@ -12,6 +14,21 @@ const CreateForm = () => {
   });
   const history = useHistory();
   const dispatch = useDispatch()
+  const error = useSelector(state => state.location !== null && state.location.error)
+  console.log(error)
+
+  //Toast Error Messages
+  const toastError = () =>
+    toast("All fields are required", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: "Toastify__toast--error",
+    });
 
   const onChange = (e) => setValue({ ...value, [e.target.id]: e.target.value });
   console.log(value);
@@ -19,12 +36,30 @@ const CreateForm = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(addLocation(value))
-      console.log(value)
-      history.push('/explore')
+      if(value.location !== '' && value.image !== '' && value.description !== '') {
+        history.push('/explore')
+        console.log(value)
+      }
+      else {
+        console.log('action needed')
+        toastError()
+      }
   }
 
   return (
     <div className="CreateForm">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        bodyClassName="white"
+        progressClassName="Toastify__progress-bar--dark"
+      />
       <div className="container">
         <h1>Create Location</h1>
         <form onSubmit={handleSubmit}>

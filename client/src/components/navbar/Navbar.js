@@ -3,17 +3,34 @@ import { FaAffiliatetheme } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector((state) => state.auth.currentUser);
   console.log(currentUser);
   const history = useHistory();
+  //Toast message
+  const toastError = () =>
+    toast(`Logging you out ${currentUser.username}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: "Toastify__toast--success",
+    });
+
   const logout = () => {
     localStorage.removeItem("token");
-    alert("Logging you out");
-    history.push("/");
-    window.location.reload()
+    toastError()
+    setTimeout(() => {
+      history.push("/");
+      window.location.reload()
+    }, 1500);
   };
 
   return (
@@ -59,6 +76,18 @@ const Navbar = () => {
           </ul>
         )}
         )
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          bodyClassName="white"
+          progressClassName="Toastify__progress-bar--dark"
+        />
       </nav>
     </div>
   );

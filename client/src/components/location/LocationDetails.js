@@ -3,19 +3,24 @@ import { FaCaretDown, FaEllipsisV } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
-import { deleteComment, deleteLocation, getSpecificComment, getSpecificLocations } from "../../redux/actions/locationAction";
+import {
+  deleteComment,
+  deleteLocation,
+  getSpecificComment,
+  getSpecificLocations,
+} from "../../redux/actions/locationAction";
 import "./LocationDetails.css";
 import CreateCommentForm from "../forms/commentForm/CreateCommentForm";
 
 const LocationDetails = (props) => {
   const { item } = props.location.state;
   const [toggle, setToggle] = useState(false);
-  const [commentToggle, setCommentToggle] = useState(false)
-  const [populateForm, setPopulateForm] = useState(false)
-  const [id, setId] = useState(null)
+  const [commentToggle, setCommentToggle] = useState(false);
+  const [populateForm, setPopulateForm] = useState(false);
+  const [id, setId] = useState(null);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const location = useSelector((state) => state.location.specificLocation)
-  console.log(location)
+  const location = useSelector((state) => state.location.specificLocation);
+  console.log(location);
   const history = useHistory();
   const dispatch = useDispatch();
   console.log(item);
@@ -26,8 +31,8 @@ const LocationDetails = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getSpecificLocations(item._id))
-  }, [dispatch])
+    dispatch(getSpecificLocations(item._id));
+  }, [dispatch]);
 
   return (
     <div className="LocationDetails">
@@ -76,7 +81,7 @@ const LocationDetails = (props) => {
 
       {location.comment
         ? location.comment.map((data) => {
-          console.log(data)
+            console.log(data);
             return (
               <div className="comment-container" key={data._id}>
                 <div className="comment">
@@ -91,47 +96,62 @@ const LocationDetails = (props) => {
                     )}
                   </div>
                   <div className="text">
-                    <h4>{data.author.username} {currentUser &&  currentUser._id === data.author.id && '(You)'} </h4>
+                    <h4>
+                      {data.author.username}{" "}
+                      {currentUser &&
+                        currentUser._id === data.author.id &&
+                        "(You)"}{" "}
+                    </h4>
                     <p>{data.text}</p>
-                    {/* {compare comment author } */
-                      currentUser &&  currentUser._id === data.author.id ? (
+                    {
+                      /* {compare comment author } */
+                      currentUser && currentUser._id === data.author.id ? (
                         <FaEllipsisV
                           onClick={() => setCommentToggle(!commentToggle)}
                         />
-                      ) :
-                      null
+                      ) : null
                     }
                     <hr />
                   </div>
-                  {currentUser && commentToggle && currentUser._id === data.author.id ? (
+                  {currentUser &&
+                  commentToggle &&
+                  currentUser._id === data.author.id ? (
                     <span className="button">
                       <button
-                        className={commentToggle ? "comment-btn btn-default" : "none"}
+                        className={
+                          commentToggle ? "comment-btn btn-default" : "none"
+                        }
                         onClick={() => {
-                          setPopulateForm(!populateForm)
-                          dispatch(getSpecificComment(item._id, data._id))
-                          setId(data._id)
-                          }}
+                          setPopulateForm(!populateForm);
+                          dispatch(getSpecificComment(item._id, data._id));
+                          setId(data._id);
+                        }}
                       >
                         Edit
                       </button>
                       <button
-                        className={commentToggle ? "comment-btn btn-danger" : "none"}
+                        className={
+                          commentToggle ? "comment-btn btn-danger" : "none"
+                        }
                         onClick={() => {
-                          dispatch(deleteComment(item._id, data._id))
-                          window.location.reload()
-                          }}
+                          dispatch(deleteComment(item._id, data._id));
+                          window.location.reload();
+                        }}
                       >
                         Delete
                       </button>
                     </span>
-                  ) : null }
+                  ) : null}
                 </div>
               </div>
             );
           })
         : null}
-      <CreateCommentForm item={item} populateForm={populateForm} comment_id={id} />
+      <CreateCommentForm
+        item={item}
+        populateForm={populateForm}
+        comment_id={id}
+      />
     </div>
   );
 };
