@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { clearError, registerUser } from '../../../redux/actions/authAction';
+import FileBase from 'react-file-base64'
 import './Register.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 const Register = () => {
     const [value, setValue] = useState({
@@ -62,6 +64,24 @@ const Register = () => {
       toastSuccess()
     }
     if(!success) toastError()
+
+    //BASE64
+    var handleFileSelect = function (evt) {
+      var files = evt.target.files;
+      var file = files[0];
+
+      if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload = function (readerEvt) {
+          var binaryString = readerEvt.target.result;
+          var encoded = btoa(binaryString)
+          console.log(encoded)
+          setValue({...value, avatar: encoded})
+        };
+        reader.readAsBinaryString(file);
+      }
+    };
     
     return (
         <div className="Signup">
@@ -75,7 +95,11 @@ const Register = () => {
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Password"  name="password" onChange={onChange} />
             <label htmlFor="avatar">Avatar (optional)</label>
-            <input type="text" placeholder="Input avatar url" name="avatar" onChange={onChange} />
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({base64}) => setValue({...value, avatar: base64 })}
+            />
             <button className="btn btn-warning">Register</button>
           </form>
         </div>
