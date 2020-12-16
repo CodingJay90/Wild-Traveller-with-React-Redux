@@ -25,7 +25,9 @@
 }
 
 .LocationDetails .comment img {
-    width: 50px;
+    width: 45px;
+    min-height: 50px;
+    max-height: 50px;
     border-radius: 50%;
 }
 

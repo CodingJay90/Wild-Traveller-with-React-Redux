@@ -57,6 +57,9 @@
     color: white;
 }
 
-
+.CreateForm .form.group .flex {
+    display: flex;
+    justify-content: space-between;
+}
 
 

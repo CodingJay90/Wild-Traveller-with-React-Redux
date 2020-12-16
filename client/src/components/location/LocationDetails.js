@@ -146,7 +146,7 @@ const LocationDetails = (props) => {
               </div>
             );
           })
-        : null}
+        : <h1>Loading Comments...</h1>}
       <CreateCommentForm
         item={item}
         populateForm={populateForm}

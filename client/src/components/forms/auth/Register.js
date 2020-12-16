@@ -20,21 +20,26 @@ const Register = () => {
 
     //SELECTORS
     const isAuthenticated =useSelector(state => state.auth.isAuthenticated)
-    const error = useSelector(state => state.auth.errMsg)
+    const errors = useSelector(state => state.auth.errMsg)
     const success = useSelector(state => state.auth.success)
+    
+    errors.errors && errors.errors.map(err => {
+      console.log(err.msg)
+      const toastError = () => {
+        toast(err.msg, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          className: "Toastify__toast--success",
+        });
+      };
+      toastError()
+    })
 
-    const toastError = () => {
-      toast(error.message, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        className: "Toastify__toast--error",
-      });
-    };
 
     const toastSuccess = () => {
       toast(`Sign up succcessfull`, {
@@ -63,7 +68,7 @@ const Register = () => {
       history.push("/explore");
       toastSuccess()
     }
-    if(!success) toastError()
+    // if(!success) toastError()
 
     //BASE64
     var handleFileSelect = function (evt) {
@@ -89,7 +94,7 @@ const Register = () => {
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
-            <input type="email" placeholder="Email" name="email" onChange={onChange} />
+            <input type="text" placeholder="Email" name="email" onChange={onChange} />
             <label htmlFor="username">Username</label>
             <input type="text" placeholder="Username"   name="username" onChange={onChange} />
             <label htmlFor="password">Password</label>

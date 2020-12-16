@@ -78,7 +78,7 @@ const Explore = (props) => {
         <div className="hero">
           <h1>Explore the world of Images</h1>
           <h2>
-            Add Your own Location and let people know what they think about it
+            Add Your own Travel experience and let people know what they think about it
           </h2>
           <h3>Start by adding your Location</h3>
           <Link className="btn btn-outline-warning" to="/create">

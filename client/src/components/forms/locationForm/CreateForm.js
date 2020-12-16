@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addLocation } from "../../../redux/actions/locationAction";
+import FileBase from "react-file-base64";
 import "./CreateForm.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -69,19 +70,29 @@ const CreateForm = () => {
               type="text"
               id="location"
               name="location"
+              placeholder='Location Name'
               value={value.location}
               onChange={onChange}
             />
           </div>
           <div className="form group">
             <label htmlFor="image">Image</label>
-            <input
-              type="text"
-              name="image"
-              id="image"
-              value={value.image}
-              onChange={onChange}
-            />
+            <div className="flex">
+              <input
+                type="text"
+                name="image"
+                id="image"
+                value={value.image}
+                onChange={onChange}
+                placeholder='Image Url'
+              />
+              OR
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setValue({ ...value, image: base64 })}
+              />
+            </div>
           </div>
           <div className="form-group">
             <label htmlFor="description">Description</label>
