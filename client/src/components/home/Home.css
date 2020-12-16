@@ -1,6 +1,6 @@
-.Home .showcase {
+.Home .jumbotron {
     height: 95vh;
-    background: url(https://www.w3schools.com/w3images/mac.jpg);
+    background: url(https://wallpapercave.com/wp/wp2742508.jpg);
     
 }
 .Home .showcase h1 {
@@ -17,8 +17,9 @@
     margin-left: 2em;
 }
 
-.Home .jumbotron {
-    background: rgb(0, 0, 0);
+.Home .showcase {
+    background: rgba(0, 0, 0, 0.767);
+    height: 95vh;
 }
 
 .Home .section {
@@ -46,4 +47,10 @@
 
 .Home .section img {
     border-radius: 7px;
+}
+
+@media screen and (max-width: 900px) {
+    .Home .section {
+        display: block;
+    }
 }

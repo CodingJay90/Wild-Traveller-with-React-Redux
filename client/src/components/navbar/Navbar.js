@@ -1,12 +1,14 @@
-import React from "react";
-import { FaAffiliatetheme } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaAffiliatetheme, FaHamburger, FaIcons } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import hamburger from '../../img/hamburger.png'
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector((state) => state.auth.currentUser);
   console.log(currentUser);
@@ -38,13 +40,14 @@ const Navbar = () => {
       <nav className="navbar">
         <ul className="nav-group">
           <li className="nav-item brand">
-            <FaAffiliatetheme size={40} />
             <NavLink className="brand" to="/">
+            <FaAffiliatetheme size={40} />
               Wild Travelller
             </NavLink>
+            <img onClick={() => setMenuOpen(!menuOpen)} src={hamburger} width='40' alt="" className="menu-icon"/>
           </li>
         </ul>
-        <ul className="nav-group">
+        <ul className={menuOpen ? ('nav-group') : ('d-none')}>
           <li className="nav-item">
             <NavLink to="/">Home</NavLink>
           </li>
@@ -52,7 +55,7 @@ const Navbar = () => {
           <li className="nav-item">Promotion</li>
         </ul>
         {!token ? (
-          <ul className="nav-group">
+          <ul className={menuOpen ? ('nav-group') : ('d-none')}>
             <li className="nav-item">
               <NavLink to="/signup">SignUp</NavLink>
             </li>
@@ -61,12 +64,12 @@ const Navbar = () => {
             </li>
           </ul>
         ) : (
-          <ul className="nav-group">
+          <ul className={menuOpen ? ('nav-group') : ('d-none')}>
             {currentUser && (
-              <ul className="nav-group">
+              <ul className={menuOpen ? ('nav-group') : ('d-none')}>
                 <li className="nav-item">{currentUser.username}</li>
                 <li className="nav-item">
-                  <img src={currentUser.avatar} alt="" />
+                  <img src={currentUser.avatar || 'https://img2.pngio.com/default-avatar-port-perry-hospital-foundation-gravatar-png-1600_1600.png'} alt="" />
                 </li>
                 <li className="nav-item" onClick={logout}>
                   Log Out

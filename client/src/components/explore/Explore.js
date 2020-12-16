@@ -12,6 +12,7 @@ import {
 } from "../../redux/actions/locationAction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../footer/Footer";
 
 const Explore = (props) => {
   const data = useSelector((state) => state.location.location);
@@ -131,6 +132,7 @@ const Explore = (props) => {
         bodyClassName="white"
         progressClassName="Toastify__progress-bar--dark"
       />
+      <Footer />
     </div>
   );
 };

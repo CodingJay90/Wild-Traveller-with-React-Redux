@@ -3,6 +3,7 @@ import { FaEnvira } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./Home.css";
 import image from "../../img/img7.jpg";
+import Footer from '../footer/Footer';
 
 const Home = () => {
     return (
@@ -31,6 +32,7 @@ const Home = () => {
             <img src={image} alt="" width="600" height="300" />
           </div>
         </div>
+        <Footer />
       </div>
     );
 }
