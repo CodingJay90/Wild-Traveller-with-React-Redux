@@ -42,6 +42,7 @@ const CreateCommentForm = ( { item: {_id}, populateForm, comment_id } ) => {
             type="text"
             onChange={(e) => setText(e.target.value)}
             value={text}
+            placeholder="Add comment"
           />
           <button className="btn btn-warning">Enter</button>
         </form>

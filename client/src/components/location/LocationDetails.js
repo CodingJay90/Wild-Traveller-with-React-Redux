@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaCaretDown, FaEllipsisV } from "react-icons/fa";
+import { FaCaretDown, FaEllipsisV, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { Link, useHistory } from "react-router-dom";
@@ -37,38 +37,37 @@ const LocationDetails = (props) => {
   return (
     <div className="LocationDetails">
       <div className="container">
-        <div className="image">
-          <div className="img-container">
-            <img src={item.image} alt="" />
-            {currentUser && currentUser._id === item.author.id && (
-              <span className="btn-controller">
-                <FaCaretDown size={52} onClick={() => setToggle(!toggle)} />{" "}
+        <div className="img-container">
+          <img src={item.image} alt="" />
+          {currentUser && currentUser._id === item.author.id && (
+            <span className="btn-controller">
+              <FaCaretDown size={52} onClick={() => setToggle(!toggle)} />{" "}
+            </span>
+          )}
+        
+        {currentUser && currentUser._id === item.author.id ? (
+          <span className="options">
+            {toggle && (
+              <span className="button">
+                <Link
+                  to={{
+                    pathname: "/edit",
+                    state: { item },
+                  }}
+                  className={toggle ? "btn btn-default" : "none"}
+                >
+                  Edit
+                </Link>
+                <Link
+                  className={toggle ? "btn btn-danger" : "none"}
+                  onClick={() => onDeleteLocation(item._id)}
+                >
+                  Delete
+                </Link>
               </span>
             )}
-          </div>
-          {currentUser && currentUser._id === item.author.id ? (
-            <span className="options">
-              {toggle && (
-                <span className="button">
-                  <Link
-                    to={{
-                      pathname: "/edit",
-                      state: { item },
-                    }}
-                    className={toggle ? "btn btn-default" : "none"}
-                  >
-                    Edit
-                  </Link>
-                  <Link
-                    className={toggle ? "btn btn-danger" : "none"}
-                    onClick={() => onDeleteLocation(item._id)}
-                  >
-                    Delete
-                  </Link>
-                </span>
-              )}
-            </span>
-          ) : null}
+          </span>
+        ) : null}
         </div>
         <div className="details">
           <h1>Name : {item.location}</h1>
@@ -79,23 +78,24 @@ const LocationDetails = (props) => {
         <hr className="sep-2" />
       </div>
 
-      {location.comment
-        ? location.comment.map((data) => {
-            console.log(data);
-            return (
-              <div className="comment-container" key={data._id}>
-                <div className="comment">
-                  <div className="avatar">
-                    {data.avatar ? (
-                      <img src={data.avatar} alt="" />
-                    ) : (
-                      <img
-                        src="https://img2.pngio.com/default-avatar-port-perry-hospital-foundation-gravatar-png-1600_1600.png"
-                        alt=""
-                      />
-                    )}
-                  </div>
-                  <div className="text">
+      {location.comment ? (
+        location.comment.map((data) => {
+          console.log(data);
+          return (
+            <div className="comment-container" key={data._id}>
+              <div className="comment">
+                <div className="avatar">
+                  {data.avatar ? (
+                    <img src={data.avatar} alt="" />
+                  ) : (
+                    <img
+                      src="https://img2.pngio.com/default-avatar-port-perry-hospital-foundation-gravatar-png-1600_1600.png"
+                      alt=""
+                    />
+                  )}
+                </div>
+                <div className="text">
+                  <div className="comment-content">
                     <h4>
                       {data.author.username}{" "}
                       {currentUser &&
@@ -103,50 +103,60 @@ const LocationDetails = (props) => {
                         "(You)"}{" "}
                     </h4>
                     <p>{data.text}</p>
-                    {
-                      /* {compare comment author } */
-                      currentUser && currentUser._id === data.author.id ? (
-                        <FaEllipsisV
-                          onClick={() => setCommentToggle(!commentToggle)}
-                        />
-                      ) : null
-                    }
-                    <hr />
+                    <div className="comment-btn">
+                      {currentUser &&
+                      commentToggle &&
+                      currentUser._id === data.author.id ? (
+                        <span className="button">
+                          <button
+                            className={
+                              commentToggle ? "comment-btn" : "none"
+                            }
+                            onClick={() => {
+                              setPopulateForm(!populateForm);
+                              dispatch(getSpecificComment(item._id, data._id));
+                              setId(data._id);
+                            }}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className={
+                              commentToggle ? "comment-btn" : "none"
+                            }
+                            onClick={() => {
+                              dispatch(deleteComment(item._id, data._id));
+                              window.location.reload();
+                            }}
+                          >
+                            Delete
+                          </button>
+                        </span>
+                      ) : null}
+                    </div>
                   </div>
-                  {currentUser &&
-                  commentToggle &&
-                  currentUser._id === data.author.id ? (
-                    <span className="button">
-                      <button
-                        className={
-                          commentToggle ? "comment-btn btn-default" : "none"
-                        }
-                        onClick={() => {
-                          setPopulateForm(!populateForm);
-                          dispatch(getSpecificComment(item._id, data._id));
-                          setId(data._id);
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className={
-                          commentToggle ? "comment-btn btn-danger" : "none"
-                        }
-                        onClick={() => {
-                          dispatch(deleteComment(item._id, data._id));
-                          window.location.reload();
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </span>
-                  ) : null}
+                  {
+                    /* {compare comment author } */
+                    currentUser && currentUser._id === data.author.id ? (
+                      <FaEllipsisV
+                        className="options-btn"
+                        onClick={() => setCommentToggle(!commentToggle)}
+                      />
+                    ) : null
+                  }
                 </div>
               </div>
-            );
-          })
-        : <h1>Loading Comments...</h1>}
+            </div>
+          );
+        })
+      ) : (
+        <div
+          style={{ margin: "4rem auto", textAlign: "center", display: "block" }}
+        >
+          <h1>Loading Comments....</h1>
+          <FaSpinner size={50} className="App-logo-spin App-logo" />
+        </div>
+      )}
       <CreateCommentForm
         item={item}
         populateForm={populateForm}

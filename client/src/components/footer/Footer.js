@@ -9,9 +9,9 @@ const Footer = () => {
                     <div class="footer-cols">
                         <ul>
                             <li>Shop & Learn</li>
-                            <li><a href="#">Music</a></li>
-                            <li><a href="#">Movies</a></li>
-                            <li><a href="#">Shows</a></li>
+                            <li><a href="#">Lorem</a></li>
+                            <li><a href="#">Ipsum</a></li>
+                            <li><a href="#">Dolor amit</a></li>
                             <li><a href="#">Locations</a></li>
                         </ul>
 
@@ -21,7 +21,7 @@ const Footer = () => {
                             <li><a href="#">Today at Wild</a></li>
                             <li><a href="#">Wild Camp</a></li>
                             <li><a href="#">financing</a></li>
-                            <li><a href="#">Order status</a></li>
+                            <li><a href="#">Ipsum amit</a></li>
                         </ul>
 
                         <ul>

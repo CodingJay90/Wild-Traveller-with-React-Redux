@@ -13,6 +13,8 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../footer/Footer";
+import spinner from '../../spinner.svg'
+import { FaSpinner } from "react-icons/fa";
 
 const Explore = (props) => {
   const data = useSelector((state) => state.location.location);
@@ -109,16 +111,19 @@ const Explore = (props) => {
         </div>
         <hr />
       </div>
-      <div className="grid">
         {!isLoading && token ? (
+      <div className="grid">
           <div className="grid-container">
           <Location item={handleFilter(currentPosts)} />
 
           </div>
-        ) : (
-          <h1>Loading....</h1>
-        )}
       </div>
+        ) : (
+          <div style={{margin: "4rem auto", textAlign: "center", display: "block"}}>
+              <h1>Loading....</h1>
+              <FaSpinner size={50} className='App-logo-spin App-logo' />
+          </div>
+        )}
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={location.length}

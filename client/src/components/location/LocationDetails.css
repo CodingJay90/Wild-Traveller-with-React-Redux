@@ -3,31 +3,34 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 81%;
+    width: 91%;
     margin: 4.5rem auto;
 }
 
 .LocationDetails .container {
-    width: 80%;
-    max-width: 80%;
-    margin: 10em auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 95%;
+    margin: 8em auto;
     background: #f8f6f6;
 }
 
-.LocationDetails .image img {
-    width: 60%;
-    height: 50%;
-    margin: 2rem 15rem;
+.LocationDetails .img-container img {
     border-radius: 7px;
-    margin-bottom: 0;
+    width: 100%;
     position: relative;
-    margin-left: 12rem;
+}
+
+.LocationDetails .img-container {
+    width: 100%;
+    margin: auto;
 }
 
 .LocationDetails .comment img {
     width: 45px;
     min-height: 50px;
-    max-height: 50px;
+    max-width: 50px;
     border-radius: 50%;
 }
 
@@ -55,9 +58,9 @@
 }
 
 .LocationDetails .btn-controller {
-    position: absolute;
-    top: 200px;
-    right: 400px;
+    /* position: absolute;
+    top: -500px;
+    right: -100px; */
     color: #011b1d;
     cursor: pointer;
 }
@@ -96,15 +99,11 @@
     visibility: hidden;
 }
 
-.LocationDetails span.button .comment-btn.btn-danger {
-    padding: 7px;
+.LocationDetails span.button .comment-btn {
     border-radius: 5px;
-    color: #fff;
-}
-
-.comment-btn.btn-default {
-    padding: 7px;
-    border-radius: 5px;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
 }
 
 /* COMMENTS */
@@ -116,13 +115,20 @@
 
 .LocationDetails .comment-container .comment .text {
     background: linear-gradient(to right, #f0f0f0, #f0f0f0);
-    /* display: flex; */
-    padding: 0 2rem;
+    display: flex;
+    padding: 1rem;
     margin-left: 1.2rem;
-    margin-top: 0;
+    margin-top: 4px;
     border-radius: 5px;
-    max-width: 50%;
-    min-width: 30%;
+    max-width: 31%;
+    min-width: 31%;
+    position: relative;
+}
+
+.LocationDetails .comment-container .comment .text .options-btn {
+    position: absolute;
+    top: 10px;
+    left: 330px;
 }
 
 .LocationDetails .comment-container .comment hr {
@@ -133,20 +139,29 @@
 }
 
 .LocationDetails .comment-input {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
 }
 
 .LocationDetails .comment-input input {
     padding: 1rem;
     margin: 1rem;
-    position: sticky;
-    width: 50%;
+    position: fixed;
+    width: 30%;
     bottom: 0;
+    left: 600px;
     z-index: 3;
 }
 
 .LocationDetails .comment-input button {
-    position: sticky;
+    position: fixed;
+    left: 1050px;
     bottom: 0;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .LocationDetails .container {
+        display: block;
+    }
 }

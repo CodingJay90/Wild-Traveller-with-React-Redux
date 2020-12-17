@@ -13,6 +13,7 @@ import Register from "./components/forms/auth/Register";
 import Login from "./components/forms/auth/Login";
 import { loadUser } from "./redux/actions/authAction";
 import ResponsiveNavbar from "./components/navbar/ResponsiveNavbar";
+import Contact from "./components/contact/Contact.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/edit" component={EditForm} />
         <Route path="/signup" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/contact" component={Contact} />
       </div>
     </BrowserRouter>
   );
