@@ -1,7 +1,10 @@
 .Navbar nav {
   display: flex;
-  background: rgb(138, 138, 138);
-  color: #fff;
+  /* background: rgb(138, 138, 138);
+  color: #fff; */
+  background: #fff;
+  color: #111;
+  font-size: 12px;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -20,6 +23,7 @@
 .Navbar a {
   text-decoration: none;
   color: #fff;
+  color: #111;
 }
 
 .Navbar .nav-group {
@@ -30,6 +34,10 @@
 
 .Navbar .nav-item:nth-last-of-type(1) {
   margin-left: 2rem;
+}
+
+.active:hover {
+  color: aqua;
 }
 
 .Navbar .nav-item {
@@ -43,13 +51,12 @@
 }
 
 .Navbar .nav-item:hover {
-  background: rgb(165, 165, 165);
-  border-radius: 5px;
-  transition: 250ms linear;
+  color: aqua;
+  transition: 200ms linear;
 }
 
 .Navbar .brand {
-  color: #eff0e0;
+  color: #111;
   font-size: 1.5em;
   text-align: center;
   padding: 10px;
@@ -65,14 +72,15 @@
   display: none;
 }
 
-@media screen and (max-width: 880px) {
-  
+@media screen and (max-width: 880px) { 
   .d-none {
     display: none;
+    /* height: 0; */
   }
   .Navbar nav {
     display: block;
     position: static;
+    z-index: 1;
   }
   .Navbar .nav-group {
     display: block;

@@ -12,6 +12,7 @@ import CreateForm from "./components/forms/locationForm/CreateForm";
 import Register from "./components/forms/auth/Register";
 import Login from "./components/forms/auth/Login";
 import { loadUser } from "./redux/actions/authAction";
+import ResponsiveNavbar from "./components/navbar/ResponsiveNavbar";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
+        {/* <ResponsiveNavbar /> */}
         <Route path="/" exact component={Home} />
         <Route path="/explore" component={Explore} />
         <Route path="/details" component={LocationDetails} />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaAffiliatetheme, FaHamburger, FaIcons } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
@@ -47,7 +47,7 @@ const Navbar = () => {
             <img onClick={() => setMenuOpen(!menuOpen)} src={hamburger} width='40' alt="" className="menu-icon"/>
           </li>
         </ul>
-        <ul className={menuOpen ? ('nav-group') : ('d-none')}>
+        <ul className={!menuOpen ? ('nav-group') : ('d-none')}>
           <li className="nav-item">
             <NavLink to="/">Home</NavLink>
           </li>
@@ -55,7 +55,7 @@ const Navbar = () => {
           <li className="nav-item">Promotion</li>
         </ul>
         {!token ? (
-          <ul className={menuOpen ? ('nav-group') : ('d-none')}>
+          <ul className={!menuOpen ? ('nav-group') : ('d-none')}>
             <li className="nav-item">
               <NavLink to="/signup">SignUp</NavLink>
             </li>
@@ -64,9 +64,9 @@ const Navbar = () => {
             </li>
           </ul>
         ) : (
-          <ul className={menuOpen ? ('nav-group') : ('d-none')}>
+          <ul className={!menuOpen ? ('nav-group') : ('d-none')}>
             {currentUser && (
-              <ul className={menuOpen ? ('nav-group') : ('d-none')}>
+              <ul className={!menuOpen ? ('nav-group') : ('d-none')}>
                 <li className="nav-item">{currentUser.username}</li>
                 <li className="nav-item">
                   <img src={currentUser.avatar || 'https://img2.pngio.com/default-avatar-port-perry-hospital-foundation-gravatar-png-1600_1600.png'} alt="" />

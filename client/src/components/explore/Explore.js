@@ -75,16 +75,18 @@ const Explore = (props) => {
   return (
     <div className="Explore">
       <div className="showcase">
-        <video src={video} muted loop autoPlay></video>
-        <div className="hero">
-          <h1>Explore the world of Images</h1>
-          <h2>
-            Add Your own Travel experience and let people know what they think about it
-          </h2>
-          <h3>Start by adding your Location</h3>
-          <Link className="btn btn-outline-warning" to="/create">
-            Add Location
-          </Link>
+        <div className="video-showcase">
+          <video src={video} muted loop autoPlay />
+            <div className="hero">
+              <h1>Explore the world of Images</h1>
+              <h2>
+                Add Your own Travel experience and let people know what they think about it
+              </h2>
+              <h3>Start by adding your Location</h3>
+              <Link className="btn btn-outline-warning" to="/create">
+                Add Location
+              </Link>
+            </div>
         </div>
       </div>
       <div className="container">
@@ -109,7 +111,10 @@ const Explore = (props) => {
       </div>
       <div className="grid">
         {!isLoading && token ? (
+          <div className="grid-container">
           <Location item={handleFilter(currentPosts)} />
+
+          </div>
         ) : (
           <h1>Loading....</h1>
         )}
