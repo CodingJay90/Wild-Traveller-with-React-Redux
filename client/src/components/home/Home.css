@@ -1,7 +1,6 @@
 .Home .jumbotron {
     height: 95vh;
     background: url(https://wallpapercave.com/wp/wp2742508.jpg);
-    
 }
 .Home .showcase h1 {
     color: #fff;
@@ -24,6 +23,7 @@
 
 .Home .section {
     display: flex;
+    font-family: 'Montserrat', sans-serif;
     justify-content: space-between;
 }
 
@@ -34,11 +34,15 @@
     border-radius: 4px;
     color: #111;
     font-weight: bolder;
-    font-family: helvetica;
+    font-family: 'Montserrat', sans-serif;;
 }
 
 .Home .section .item-group.explore h4{
     margin-bottom: 5.4rem;
+}
+
+.Home .section .item-group h2{
+    margin-top: 2.2rem;
 }
 
 .Home .section .item-group.explore {
@@ -47,6 +51,7 @@
 
 .Home .section img {
     border-radius: 7px;
+    margin-top: 1.1rem;
 }
 
 @media screen and (max-width: 900px) {

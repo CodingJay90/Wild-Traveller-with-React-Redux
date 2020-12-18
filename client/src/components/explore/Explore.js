@@ -16,6 +16,7 @@ import Footer from "../footer/Footer";
 import spinner from '../../spinner.svg'
 import { FaSpinner } from "react-icons/fa";
 
+
 const Explore = (props) => {
   const data = useSelector((state) => state.location.location);
   const isLoading = useSelector((state) => state.location.isLoading);

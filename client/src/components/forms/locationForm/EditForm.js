@@ -5,6 +5,7 @@ import { updateLocation } from "../../../redux/actions/locationAction";
 import "./CreateForm.css";
 import Footer from "../../footer/Footer";
 import FileBase from "react-file-base64";
+import { MdPhotoSizeSelectActual, MdSubject } from "react-icons/md";
 
 const EditForm = (props) => {
   const { item } = props.history.location.state;
@@ -41,7 +42,7 @@ const EditForm = (props) => {
               />
             </div>
             <div className="form group">
-              <label htmlFor="image">Image</label>
+              <label htmlFor="image">Image <MdPhotoSizeSelectActual /></label>
               <div className="flex">
                 <input
                 type="text"
@@ -60,7 +61,7 @@ const EditForm = (props) => {
               </div>
               
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Description <MdSubject /></label>
               <textarea
                 name="description"
                 id="description"

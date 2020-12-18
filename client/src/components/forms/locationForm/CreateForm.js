@@ -7,6 +7,7 @@ import "./CreateForm.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../../footer/Footer";
+import { MdPhotoSizeSelectActual, MdSubject } from "react-icons/md";
 
 const CreateForm = () => {
   const [value, setValue] = useState({
@@ -78,7 +79,7 @@ const CreateForm = () => {
             />
           </div>
           <div className="form group">
-            <label htmlFor="image">Image</label>
+            <label htmlFor="image">Image {" "} <MdPhotoSizeSelectActual /></label>
             <div className="flex">
               <input
                 type="text"
@@ -97,7 +98,7 @@ const CreateForm = () => {
             </div>
           </div>
           <div className="form-group">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">Description <MdSubject /></label>
             <textarea
               name="description"
               id="description"

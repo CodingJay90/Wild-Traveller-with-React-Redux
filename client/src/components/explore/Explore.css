@@ -49,7 +49,7 @@
 
 .Explore .container .drop-down-container {
     width: 80%;
-    margin: auto;
+    margin: 2rem auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }

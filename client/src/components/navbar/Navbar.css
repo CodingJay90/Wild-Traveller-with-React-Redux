@@ -74,8 +74,11 @@
 
 @media screen and (max-width: 880px) { 
   .d-none {
+    position: absolute;
+    transform: translateY(100%);
     display: none;
-    /* height: 0; */
+    opacity: 0;
+    pointer-events: none;
   }
   .Navbar nav {
     display: block;
@@ -87,6 +90,7 @@
   }
   .Navbar .nav-item {
     text-align: left;
+    width: 100%;
     padding-left: 10px;
     border-bottom: 1px solid rgba(0, 255, 221, 0.205);
   }

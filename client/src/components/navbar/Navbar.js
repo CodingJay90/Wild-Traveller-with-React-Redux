@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaAddressCard, FaAffiliatetheme, FaGift, FaHome, FaSignOutAlt, FaWallet } from "react-icons/fa";
+import { FaAddressCard, FaAffiliatetheme, FaCampground, FaGift, FaHome, FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";
@@ -41,7 +41,8 @@ const Navbar = () => {
         <ul className="nav-group">
           <li className="nav-item brand">
             <NavLink className="brand" to="/">
-              <FaAffiliatetheme size={40} />
+              <FaCampground size={40} />
+              {" "}
               Wild Travelller
             </NavLink>
             <img
@@ -53,7 +54,7 @@ const Navbar = () => {
             />
           </li>
         </ul>
-        <ul className={!menuOpen ? "nav-group" : "d-none"}>
+        <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
           <li className="nav-item">
             <FaHome />{' '}<NavLink to="/">Home</NavLink>
           </li>
@@ -63,7 +64,7 @@ const Navbar = () => {
           <li className="nav-item"><FaGift />{' '}Promotion</li>
         </ul>
         {!token ? (
-          <ul className={!menuOpen ? "nav-group" : "d-none"}>
+          <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
             <li className="nav-item">
               <NavLink to="/signup">SignUp</NavLink>
             </li>
@@ -72,9 +73,9 @@ const Navbar = () => {
             </li>
           </ul>
         ) : (
-          <ul className={!menuOpen ? "nav-group" : "d-none"}>
+          <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
             {currentUser && (
-              <ul className={!menuOpen ? "nav-group" : "d-none"}>
+              <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
                 <li className="nav-item">{currentUser.username}</li>
                 <li className="nav-item">
                   <img

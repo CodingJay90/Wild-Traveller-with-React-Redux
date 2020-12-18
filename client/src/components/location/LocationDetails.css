@@ -149,13 +149,13 @@
     position: fixed;
     width: 30%;
     bottom: 0;
-    left: 600px;
+    left: 40%;
     z-index: 3;
 }
 
 .LocationDetails .comment-input button {
     position: fixed;
-    left: 1050px;
+    left: 72%;
     bottom: 0;
     margin-bottom: 1rem;
 }
