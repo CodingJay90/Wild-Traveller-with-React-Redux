@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaAffiliatetheme } from "react-icons/fa";
+import { FaAddressCard, FaAffiliatetheme, FaGift, FaHome, FaSignOutAlt, FaWallet } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";
@@ -55,12 +55,12 @@ const Navbar = () => {
         </ul>
         <ul className={!menuOpen ? "nav-group" : "d-none"}>
           <li className="nav-item">
-            <NavLink to="/">Home</NavLink>
+            <FaHome />{' '}<NavLink to="/">Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/contact">Contact</NavLink>
+            <FaAddressCard />{' '}<NavLink to="/contact">Contact</NavLink>
           </li>
-          <li className="nav-item">Promotion</li>
+          <li className="nav-item"><FaGift />{' '}Promotion</li>
         </ul>
         {!token ? (
           <ul className={!menuOpen ? "nav-group" : "d-none"}>
@@ -86,7 +86,7 @@ const Navbar = () => {
                   />
                 </li>
                 <li className="nav-item" onClick={logout}>
-                  Log Out
+                  Log Out{" "}<FaSignOutAlt />
                 </li>
               </ul>
             )}

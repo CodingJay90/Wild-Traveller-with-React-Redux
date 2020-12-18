@@ -6,6 +6,7 @@ import FileBase from "react-file-base64";
 import "./CreateForm.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../../footer/Footer";
 
 const CreateForm = () => {
   const [value, setValue] = useState({
@@ -48,6 +49,7 @@ const CreateForm = () => {
   }
 
   return (
+    <React.Fragment>
     <div className="CreateForm">
       <ToastContainer
         position="top-right"
@@ -109,6 +111,10 @@ const CreateForm = () => {
         </form>
       </div>
     </div>
+    <div>
+      <Footer />
+    </div>
+    </React.Fragment>
   );
 };
 

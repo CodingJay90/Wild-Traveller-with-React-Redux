@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { updateLocation } from "../../../redux/actions/locationAction";
 import "./CreateForm.css";
+import Footer from "../../footer/Footer";
+import FileBase from "react-file-base64";
 
 const EditForm = (props) => {
   const { item } = props.history.location.state;
@@ -19,9 +21,11 @@ const EditForm = (props) => {
     dispatch(updateLocation(item._id, value))
     console.log(item._id)
     history.push('/explore')
+    window.location.reload()
   }
 
     return (
+      <React.Fragment>
       <div className="CreateForm">
         <div className="container">
           <h1>Edit Location</h1>
@@ -38,14 +42,23 @@ const EditForm = (props) => {
             </div>
             <div className="form group">
               <label htmlFor="image">Image</label>
-              <input
+              <div className="flex">
+                <input
                 type="text"
                 name="image"
                 id="image"
                 value={value.image}
                 onChange={onChange}
               />
+              OR
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) => setValue({ ...value, image: base64 })}
+              />
             </div>
+              </div>
+              
             <div className="form-group">
               <label htmlFor="description">Description</label>
               <textarea
@@ -61,6 +74,8 @@ const EditForm = (props) => {
           </form>
         </div>
       </div>
+        <Footer />
+      </React.Fragment>
     );
 }
 

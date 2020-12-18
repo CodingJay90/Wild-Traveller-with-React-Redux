@@ -5,6 +5,7 @@ import { clearError, loginUser } from "../../../redux/actions/authAction";
 import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../../footer/Footer";
 
 const Login = () => {
   const [value, setValue] = useState({
@@ -67,42 +68,48 @@ const Login = () => {
   }
   if (isAuthenticated !== null) {
     history.push("/");
+    window.location.reload()
   }
   return (
-    <div className="Signup">
-      <div className="container">
-        <h1>Log in</h1>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            placeholder="Email"
-            name="email"
-            onChange={onChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={onChange}
-          />
-          <button className="btn btn-warning">Login</button>
-        </form>
+    <React.Fragment>
+      <div className="Signup">
+        <div className="container">
+          <h1>Log in</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={onChange}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={onChange}
+            />
+            <button className="btn btn-warning">Login</button>
+          </form>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          bodyClassName="white"
+          progressClassName="Toastify__progress-bar--dark"
+        />
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        bodyClassName="white"
-        progressClassName="Toastify__progress-bar--dark"
-      />
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </React.Fragment>
   );
 };
 

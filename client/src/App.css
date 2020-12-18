@@ -28,7 +28,7 @@ a{
 .btn-outline-warning {
     background: transparent;
     border: 2px solid gold;
-    transition: 300ms linear;
+    transition: 200ms linear;
 }
 
 .btn-outline-warning:hover {

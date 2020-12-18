@@ -6,6 +6,7 @@ import FileBase from 'react-file-base64'
 import './Register.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "../../footer/Footer";
 
 
 const Register = () => {
@@ -67,6 +68,7 @@ const Register = () => {
     if(isAuthenticated !== null) {
       history.push("/explore");
       toastSuccess()
+      window.location.reload()
     }
     // if(!success) toastError()
 
@@ -89,6 +91,7 @@ const Register = () => {
     };
     
     return (
+      <React.Fragment>
         <div className="Signup">
         <div className="container">
           <h1>Register</h1>
@@ -121,6 +124,11 @@ const Register = () => {
         progressClassName="Toastify__progress-bar--dark"
       />
       </div>
+      <div>
+
+      <Footer />
+      </div>
+      </React.Fragment>
     )
 }
 
