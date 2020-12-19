@@ -5,7 +5,7 @@ import {
   REGISTER_USER_FAIL,
   USER_LOADED,
   USER_LOADED_FAIL,
-  CLEAR_ERROR, UPDATE_USER
+  CLEAR_ERROR, UPDATE_USER, DELETE_USER
 } from "./actionTypes";
 
 export const registerUser = (user) => (dispatch) => {
@@ -109,6 +109,17 @@ export const updateUser = (data) => (dispatch, getState) => {
   })
 }
 
+export const deleteUser = () => (dispatch, getState) => {
+  fetch("http://localhost:5000/auth/delete", {
+    method: 'DELETE',
+    headers: {
+      "Authorization": getState().auth.token
+    }
+  })
+  .then(dispatch({
+    type: DELETE_USER
+  }))
+}
 
 
 

@@ -25,6 +25,7 @@ export const USER_LOADED = 'USER_LOADED'
 export const USER_LOADED_FAIL = 'USER_LOADED_FAIL'
 export const CLEAR_ERROR = 'CLEAR_ERROR'
 export const UPDATE_USER = 'UPDATE_USER'
+export const DELETE_USER = 'DELETE_USER'
 
 //ERROR TYPES
 export const LOCATION_ERROR = 'LOCATION_ERROR'

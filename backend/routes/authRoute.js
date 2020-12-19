@@ -135,4 +135,18 @@ router.put("/update", isLoggedIn, async (req, res) => {
   }
 });
 
+//Delete a user account
+router.delete('/delete', isLoggedIn, (req, res) => {
+  try {
+    User.findByIdAndDelete({ _id: req.user.id })
+      .then(() => res.status(200).json({ success: true }))
+      .catch((err) =>
+        res.status(400).json({ success: false, message: err.message })
+      );
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+    console.log(error);
+  }
+})
+
 module.exports = router;
