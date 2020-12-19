@@ -4,6 +4,7 @@ import {
   LOGIN_USER_FAIL,
   REGISTER_USER,
   REGISTER_USER_FAIL,
+  UPDATE_USER,
   USER_LOADED,
   USER_LOADED_FAIL,
 } from "../actions/actionTypes";
@@ -52,11 +53,19 @@ export default function (state = initialState, action) {
         currentUser: action.payload,
       };
     }
+    case UPDATE_USER: {
+      return {
+        ...state,
+        isAuthenticated: true,
+        currentUser: action.payload
+      }
+    }
     case CLEAR_ERROR: {
       return {
         ...state,
         success: null,
-        errMsg: ''
+        errMsg: '',
+        currentUser: action.payload
       }
     }
     default:

@@ -5,6 +5,7 @@ const { body, validationResult, check } = require("express-validator");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const user = require("../models/user");
 
 //HANDLE SIGNUP LOGIC
 router.post(
@@ -107,7 +108,6 @@ router.post("/login", async (req, res) => {
 //ACCESS USER
 router.get("/user", isLoggedIn, (req, res) => {
   User.findById(req.user.id)
-    .select("-password")
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
 });
@@ -115,13 +115,21 @@ router.get("/user", isLoggedIn, (req, res) => {
 //Update a user
 router.put("/update", isLoggedIn, async (req, res) => {
   try {
-    User.findByIdAndUpdate(req.user.id, req.body)
+    User.findByIdAndUpdate(
+      { _id: req.user.id },
+      req.body,
+      { new: false, useFindAndModify: false },
+      () => {}
+    )
       .then((updatedUser) => {
+        console.log(updatedUser.username)
+        req.user.username = updatedUser.username
         res.status(200).json({ success: true, updatedUser });
       })
-      .catch((err) =>
-        res.status(400).json({ success: false, message: err.message })
-      );
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({ success: false, message: err.message });
+      });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }

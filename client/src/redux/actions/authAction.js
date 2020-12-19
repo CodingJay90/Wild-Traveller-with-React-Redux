@@ -5,7 +5,7 @@ import {
   REGISTER_USER_FAIL,
   USER_LOADED,
   USER_LOADED_FAIL,
-  CLEAR_ERROR
+  CLEAR_ERROR, UPDATE_USER
 } from "./actionTypes";
 
 export const registerUser = (user) => (dispatch) => {
@@ -88,4 +88,37 @@ export const clearError = () => dispatch => {
     type: CLEAR_ERROR
   })
 }
+
+export const updateUser = (data) => (dispatch, getState) => {
+  fetch("http://localhost:5000/auth/update", {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      "Authorization": getState().auth.token,
+      "Content-type": "Application/json",
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data.success)
+    console.log(data.updatedUser)
+    dispatch({
+      type: UPDATE_USER,
+      payload: data.updatedUser
+    })
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

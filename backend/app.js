@@ -20,10 +20,12 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 mongoose
-  .connect(
-    "mongodb://localhost/wild_traveller_project_2",
-    {useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect("mongodb://localhost/wild_traveller_project_2", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
   .then(() => console.log("Mongodb connected successfully"));
 
 //Import Routes
