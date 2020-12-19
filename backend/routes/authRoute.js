@@ -13,10 +13,7 @@ router.post(
     check("password")
       .isLength({ min: 5 })
       .withMessage("password must be at least 5 chars long"),
-    check("username")
-      .notEmpty()
-      .withMessage("Username field cannot be empty")
-    ,
+    check("username").notEmpty().withMessage("Username field cannot be empty"),
     check("email")
       .not()
       .isEmpty()
@@ -113,6 +110,21 @@ router.get("/user", isLoggedIn, (req, res) => {
     .select("-password")
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
+});
+
+//Update a user
+router.put("/update", isLoggedIn, async (req, res) => {
+  try {
+    User.findByIdAndUpdate(req.user.id, req.body)
+      .then((updatedUser) => {
+        res.status(200).json({ success: true, updatedUser });
+      })
+      .catch((err) =>
+        res.status(400).json({ success: false, message: err.message })
+      );
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
 });
 
 module.exports = router;

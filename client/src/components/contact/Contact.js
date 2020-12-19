@@ -32,6 +32,7 @@ const Contact = () => {
             <input type="text" placeholder="Email" />
             <input type="text" placeholder="Name" />
             <textarea placeholder="message" cols="30" rows="10"></textarea>
+            <button className="btn w-38 btn-warning">Submit</button>
             </form>
 
           </div>

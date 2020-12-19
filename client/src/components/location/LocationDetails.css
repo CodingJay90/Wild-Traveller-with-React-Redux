@@ -13,6 +13,7 @@
     width: 100%;
     max-width: 95%;
     margin: 8em auto;
+    margin-bottom: 6rem;
     background: #f8f6f6;
 }
 
@@ -51,9 +52,10 @@
 }
 
 .LocationDetails hr.sep-2 {
-  margin: 3rem auto;
+  margin-bottom: 3rem;
   border: 0; 
   height: 1px; 
+  width: 50%;
   background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);
 }
 
@@ -136,6 +138,12 @@
      border: 0;
      height: 1px;
      /* margin-top: 2rem; */
+}
+
+.LocationDetails h2  {
+    font-size: 2em;
+    margin: 2rem;
+    font-family: 'Montserrat';
 }
 
 .LocationDetails .comment-input {

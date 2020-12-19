@@ -16,12 +16,15 @@ a{
 .btn-outline-secondary {
     background: #fff;
     color: #111;
-    border: 2px solid rgb(131, 131, 131);
     transition: 300ms linear;
+    border: 2px solid;
+    border-image-source: linear-gradient(to right,#3f33e7, #15d8f1);
+    border-image-slice: 1;
 }
 
 .btn-outline-secondary:hover {
     background:rgb(131, 131, 131);
+    background: linear-gradient(to right, #3f33e7, #15d8f1);
     color: #fff;
 }
 

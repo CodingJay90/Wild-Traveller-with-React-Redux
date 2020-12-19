@@ -75,8 +75,10 @@ const LocationDetails = (props) => {
           <h4>Created By : {item.author.username}</h4>
           <p>Created: {moment(item.createdAt).fromNow()}</p>
         </div>
-        <hr className="sep-2" />
       </div>
+
+      <h2>Comments</h2>
+        <hr className="sep-2" />
 
       {location.comment ? (
         location.comment.map((data) => {

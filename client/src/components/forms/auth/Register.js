@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { clearError, registerUser } from '../../../redux/actions/authAction';
 import FileBase from 'react-file-base64'
 import './Register.css'
@@ -110,6 +110,7 @@ const Register = () => {
             />
             <button className="btn btn-warning">Register</button>
           </form>
+          <p>Already had an account ? <span><Link to="login">Log in</Link></span></p>
         </div>
         <ToastContainer
         position="top-right"

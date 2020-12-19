@@ -13,6 +13,7 @@
     text-align: center;
     font-weight: 300;
     color: rgb(141, 14, 141);
+    margin-bottom: 2rem;
     /* padding: 1rem; */
 }
 
@@ -46,6 +47,10 @@
     background:linear-gradient(to right, gold, rgb(233, 205, 50));
     border: none;
     margin: 0 auto;
+}
+
+.CreateForm .btn.btn-default:hover {
+    opacity: .8;
 }
 
 /* Toastify */

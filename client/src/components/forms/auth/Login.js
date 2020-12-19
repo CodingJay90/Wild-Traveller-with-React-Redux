@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { clearError, loginUser } from "../../../redux/actions/authAction";
 import "./Register.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -92,6 +92,7 @@ const Login = () => {
             />
             <button className="btn btn-warning">Login</button>
           </form>
+        <p>Do not have an account ? <span><Link to="signup">Sign Up</Link></span></p>
         </div>
         <ToastContainer
           position="top-right"

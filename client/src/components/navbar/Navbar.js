@@ -76,8 +76,13 @@ const Navbar = () => {
           <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
             {currentUser && (
               <ul className={!menuOpen ? "nav-group" : "d-none nav-group"}>
-                <li className="nav-item">{currentUser.username}</li>
                 <li className="nav-item">
+                  <NavLink to="/profile">
+                    {currentUser.username}
+                  </NavLink>
+                  </li>
+                <li className="nav-item">
+                  <NavLink to="profile">
                   <img
                     src={
                       currentUser.avatar ||
@@ -85,6 +90,7 @@ const Navbar = () => {
                     }
                     alt=""
                   />
+                  </NavLink>
                 </li>
                 <li className="nav-item" onClick={logout}>
                   Log Out{" "}<FaSignOutAlt />

@@ -9,6 +9,12 @@
     
 }
 
+.Contact button {
+    margin: auto;
+    display: block;
+    width: 90%;
+}
+
 .Contact .showcase h1 {
     color: #fff;
     text-align: center;
@@ -81,6 +87,7 @@
     box-shadow: 0 2px 5px 0 rgba(53, 53, 53, 0.63),
     0 2px 10px 0 rgba(105, 104, 104, 0.637);;
 }
+
 
 
 

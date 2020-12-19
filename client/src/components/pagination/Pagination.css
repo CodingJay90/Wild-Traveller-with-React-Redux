@@ -1,6 +1,6 @@
 .Pagination {
     width: 70%;
-    margin: 1rem auto;
+    margin: 0 auto;
     background-color: transparent;
 }
 
@@ -14,17 +14,23 @@
 .Pagination li.page-item {
     list-style-type: none;
     margin: 0 1px;
-    font-size: 1.2em;
+    font-size: 1.7em;
     color: rgb(80, 223, 208);
     border: 1px solid rgb(42, 189, 194);
     padding: 5px 7px;
     transition: 150ms linear;
     border-radius: 3px;
+    border-image-source: linear-gradient(to right, red, purple);
+    border-image-source: linear-gradient(45deg,#3f33e7, #15d8f1);
+    border-image-slice: 1;
 }
 
 .Pagination li.page-item:hover {
-    background: turquoise;
+    background: linear-gradient(45deg,#3f33e7, #15d8f1);
     cursor: pointer;
+}
+.Pagination li.page-item a:hover {
+    color: #fff;
 }
 
 .Pagination a.page-link {

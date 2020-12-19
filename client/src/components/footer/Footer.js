@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = () => {
@@ -9,37 +10,37 @@ const Footer = () => {
                     <div class="footer-cols">
                         <ul>
                             <li>Shop & Learn</li>
-                            <li><a href="#">Lorem</a></li>
-                            <li><a href="#">Ipsum</a></li>
-                            <li><a href="#">Dolor amit</a></li>
-                            <li><a href="#">Locations</a></li>
+                            <li><Link>Lorem</Link></li>
+                            <li><Link >Ipsum</Link></li>
+                            <li><Link >Dolor amit</Link></li>
+                            <li><Link >Locations</Link></li>
                         </ul>
 
                         <ul>
                             <li>Wild Store</li>
-                            <li><a href="#">Find a Location</a></li>
-                            <li><a href="#">Today at Wild</a></li>
-                            <li><a href="#">Wild Camp</a></li>
-                            <li><a href="#">financing</a></li>
-                            <li><a href="#">Ipsum amit</a></li>
+                            <li><Link >Find Link Location</Link></li>
+                            <li><Link >Today at Wild</Link></li>
+                            <li><Link >Wild Camp</Link></li>
+                            <li><Link >financing</Link></li>
+                            <li><Link >Ipsum amit</Link></li>
                         </ul>
 
                         <ul>
                             <li>Education & Business</li>
-                            <li><a href="#">Wild & Education</a></li>
-                            <li><a href="#">Shop For College</a></li>
-                            <li><a href="#">Wild And Business</a></li>
-                            <li><a href="#">Shop for Business</a></li>
-                            <li><a href="#">Jobs</a></li>
+                            <li><Link>Wild & Education</Link></li>
+                            <li><Link >Shop For College</Link></li>
+                            <li><Link >Wild And Business</Link></li>
+                            <li><Link >Shop for Business</Link></li>
+                            <li><Link>Jobs</Link></li>
                         </ul>
 
                         <ul>
                             <li>About Wild</li>
-                            <li><a href="#">NewsRoom</a></li>
-                            <li><a href="#">Wild Leadership</a></li>
-                            <li><a href="#">Investors</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Contact Wild</a></li>
+                            <li><Link >NewsRoom</Link></li>
+                            <li><Link >Wild Leadership</Link></li>
+                            <li><Link >Investors</Link></li>
+                            <li><Link >Events</Link></li>
+                            <li><Link >Contact Wild</Link></li>
                         </ul>
                     </div>
                 </div>

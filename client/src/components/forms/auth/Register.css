@@ -35,3 +35,16 @@
     margin: 15px auto;
     display: block;
 }
+
+.Signup p {
+  font-size: 1.2em;
+  margin-top: 2.3rem;
+}
+
+.Signup p span {
+  font-size: 17px;
+}
+
+.Signup p span:hover {
+  text-decoration: underline;
+}
