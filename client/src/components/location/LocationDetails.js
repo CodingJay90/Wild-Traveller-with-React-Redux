@@ -23,7 +23,6 @@ const LocationDetails = (props) => {
   console.log(location);
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log(item);
 
   const onDeleteLocation = (id) => {
     dispatch(deleteLocation(id));
@@ -32,7 +31,7 @@ const LocationDetails = (props) => {
 
   useEffect(() => {
     dispatch(getSpecificLocations(item._id));
-  }, [dispatch]);
+  }, [dispatch, item._id]);
 
   return (
     <div className="LocationDetails">
@@ -82,7 +81,6 @@ const LocationDetails = (props) => {
 
       {location.comment ? (
         location.comment.map((data) => {
-          console.log(data);
           return (
             <div className="comment-container" key={data._id}>
               <div className="comment">
@@ -99,7 +97,12 @@ const LocationDetails = (props) => {
                 <div className="text">
                   <div className="comment-content">
                     <h4>
-                      {data.author.username}{" "}
+                      <Link style={{color: 'blue'}} to={{
+                        pathname:`/userProfile/${data.author.id}`,
+                        state: {data}
+                      }}>
+                        {data.author.username}{" "}
+                      </Link>
                       {currentUser &&
                         currentUser._id === data.author.id &&
                         "(You)"}{" "}

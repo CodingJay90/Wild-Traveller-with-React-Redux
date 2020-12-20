@@ -1,6 +1,8 @@
 import {
   CLEAR_ERROR,
   DELETE_USER,
+  FETCH_LOADING,
+  GET_SPECIFIC_USER,
   LOGIN_USER,
   LOGIN_USER_FAIL,
   REGISTER_USER,
@@ -16,6 +18,8 @@ const initialState = {
   errMsg: "",
   currentUser: null,
   success: null,
+  specificUser: null,
+  isLoading: false
 };
 
 export default function (state = initialState, action) {
@@ -61,14 +65,26 @@ export default function (state = initialState, action) {
         currentUser: action.payload,
       };
     }
-    case DELETE_USER:{
-      localStorage.removeItem("token")
+    case FETCH_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SPECIFIC_USER: {
+      return {
+        ...state,
+        specificUser: action.payload,
+        isLoading: false
+      };
+    }
+    case DELETE_USER: {
+      localStorage.removeItem("token");
       return {
         ...state,
         currentUser: null,
-        isAuthenticated: null
-      }
-    };
+        isAuthenticated: null,
+      };
+    }
     case CLEAR_ERROR: {
       return {
         ...state,

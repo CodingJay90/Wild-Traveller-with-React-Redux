@@ -15,7 +15,7 @@
   text-transform: uppercase;
 }
 
-.Signup label {
+.Signup label, p {
   display: block;
   font-size: 1.5em;
   margin: 0.5rem;
@@ -28,6 +28,11 @@
   width: 95%;
   border-bottom: 1px solid rgb(150, 12, 115);
   background: transparent;
+}
+
+.Signup textarea {
+  width: 90%;
+  margin-left: 10px;
 }
 
 .Signup button {
@@ -47,4 +52,17 @@
 
 .Signup p span:hover {
   text-decoration: underline;
+}
+
+.Signup .gender {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Signup .gender label {
+  font-size: 17px;
+}
+
+.Signup .gender input[type= "radio"] {
+  display: inline;
 }

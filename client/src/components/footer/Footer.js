@@ -6,8 +6,8 @@ const Footer = () => {
     return (
         <div className="Footer">
             <footer>
-                <div class="container">
-                    <div class="footer-cols">
+                <div className="container">
+                    <div className="footer-cols">
                         <ul>
                             <li>Shop & Learn</li>
                             <li><Link>Lorem</Link></li>
@@ -44,7 +44,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div class="footer-bottom text-center">
+                <div className="footer-bottom text-center">
                     Copyright &copy; 2020 Wild Travellers
                 </div>
             </footer>

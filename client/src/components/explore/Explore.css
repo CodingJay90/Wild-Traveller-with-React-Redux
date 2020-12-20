@@ -1,5 +1,6 @@
 .Explore {
     margin-top: 4em;
+    background-color: #f1f5f5;
 }
 
 .Explore .grid {
@@ -58,15 +59,27 @@
     margin: auto;
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid rgba(60, 60, 63, 0.432);
+    border: 1px solid rgba(156, 154, 154, 0.849);
+    border-radius: 10px;
+    width: 100%;
 }
 
 
 .Explore .container .input input {
     padding: 0.8rem;
     margin:  auto;
-    border: 1px solid rgb(29, 29, 29);
+    border: 1px solid rgba(156, 154, 154, 0.849);
+    border-radius: 10px;
+    width: 100%;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1) 200ms;
 }
+
+.Explore .container .input input:focus {
+    box-shadow: 0 2px 5px 0 rgba(49, 76, 167, 0.411),
+    0 2px 10px 0 rgba(42, 69, 94, 0.384);
+    outline: none;
+}
+
 .Explore .container .input {
     margin: auto;
 }

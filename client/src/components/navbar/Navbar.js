@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaAddressCard, FaAffiliatetheme, FaCampground, FaGift, FaHome, FaSignOutAlt } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaAddressCard, FaCampground, FaGift, FaHome, FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import "./Navbar.css";

@@ -42,11 +42,18 @@ router.get('/:comment_id', (req, res) => {
 //UPDATE COMMENT
 router.put('/:comment_id', isLoggedIn, (req, res) => {
     try {
-        Comment.findByIdAndUpdate(req.params.comment_id, req.body)
-        .then(updatedComment => {
-            res.status(200).json({success: true, updatedComment})
-        })
-        .catch(err => res.status(400).json({success: false, message: err.message}))
+        Comment.findByIdAndUpdate(
+          req.params.comment_id,
+          req.body,
+          { new: false, useFindAndModify: false },
+          () => {}
+        )
+          .then((updatedComment) => {
+            res.status(200).json({ success: true, updatedComment });
+          })
+          .catch((err) =>
+            res.status(400).json({ success: false, message: err.message })
+          );
     } catch (error) {
         res.status(400).json(error.message);
         console.log(error);

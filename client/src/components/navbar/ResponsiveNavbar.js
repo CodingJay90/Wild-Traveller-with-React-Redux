@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaAffiliatetheme, FaHamburger, FaIcons } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -46,10 +45,10 @@ const ResponsiveNavbar = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li style={{ animation: "navLinkFade 0.5s ease forwards 2s" }}>
-            <a>Contact us</a>
+            <NavLink to="/">Contact us</NavLink>
           </li>
           <li style={{ animation: "navLinkFade 0.5s ease forwards 3s" }}>
-            <a>Store</a>
+            <NavLink to="/">Store</NavLink>
           </li>
         </ul>
 

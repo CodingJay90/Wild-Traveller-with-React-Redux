@@ -41,6 +41,17 @@
     margin: 2em auto;
 }
 
+.Profile .details h4 {
+    font-weight: 400;
+    font-size: 15px;
+}
+.Profile .details p {
+    text-align: center;
+    font-size: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
 .Profile .btn {
     border: none;
     padding: 1rem 0.8rem;
@@ -61,7 +72,8 @@
 }
 
 .Profile .delete-btn:hover, .edit-btn:hover {
-    opacity: .7;
+    /* opacity: .7; */
+    filter: brightness(120%);
 }
 
 .Profile .form {
@@ -74,7 +86,7 @@
     background-size: cover;
 }
 
-.Profile input {
+.Profile input, textarea {
     display: block;
     padding: 1rem .7rem;
     width: 70%;
@@ -99,5 +111,23 @@
     .Profile .container .grid-container {
         display: block;
     }
+}
+
+.Profile .gender {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: auto;
+  position: relative;
+}
+
+.Profile .gender label, .Profile label {
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+}
+
+.Profile .gender input[type= "radio"] {
+  display: inline;
 }
 

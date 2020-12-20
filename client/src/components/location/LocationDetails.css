@@ -5,6 +5,7 @@
     background-position: center;
     width: 91%;
     margin: 4.5rem auto;
+    font-size: 14px;
 }
 
 .LocationDetails .container {
@@ -53,6 +54,7 @@
 
 .LocationDetails hr.sep-2 {
   margin-bottom: 3rem;
+  margin-left: 1rem;
   border: 0; 
   height: 1px; 
   width: 50%;
@@ -127,10 +129,17 @@
     position: relative;
 }
 
+.LocationDetails .comment-container .comment .text h4 {
+    margin-top: 5px;
+}
+.LocationDetails .comment-container .comment .text h4:hover {
+    text-decoration: underline;
+}
+
 .LocationDetails .comment-container .comment .text .options-btn {
     position: absolute;
     top: 10px;
-    left: 330px;
+    left: 90%;
 }
 
 .LocationDetails .comment-container .comment hr {
@@ -155,10 +164,19 @@
     padding: 1rem;
     margin: 1rem;
     position: fixed;
-    width: 30%;
+    width: 25%;
     bottom: 0;
-    left: 40%;
+    left: 42%;
     z-index: 3;
+    border-radius: 10px;
+    border: 1px solid rgba(156, 154, 154, 0.849);
+    transition: 250ms linear;
+}
+
+.LocationDetails .comment-input input:focus {
+    box-shadow: 0 2px 5px 0 rgba(49, 76, 167, 0.411),
+    0 2px 10px 0 rgba(42, 69, 94, 0.384);
+    outline: none;
 }
 
 .LocationDetails .comment-input button {
@@ -166,6 +184,8 @@
     left: 72%;
     bottom: 0;
     margin-bottom: 1rem;
+    border-radius: 10px;
+    width: 7%;
 }
 
 @media screen and (max-width: 768px) {

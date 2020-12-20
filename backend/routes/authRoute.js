@@ -36,7 +36,7 @@ router.post(
       }),
   ],
   async (req, res) => {
-    const { email, username, avatar, password } = req.body;
+    const { email, username, avatar, password, bio, gender } = req.body;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt
       .hash(password, salt)
@@ -53,6 +53,8 @@ router.post(
         email,
         avatar,
         username,
+        bio,
+        gender,
         password: hashedPassword,
       });
       const token = jwt.sign(
@@ -111,6 +113,22 @@ router.get("/user", isLoggedIn, (req, res) => {
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
 });
+
+//Get specific user
+router.get('/user/:id', isLoggedIn, (req, res) => {
+  try {
+     User.findById(req.params.id)
+       .then((foundUser) => {
+         res.status(200).json({ success: true, foundUser });
+       })
+       .catch((err) =>
+         res.status(400).json({ success: false, message: err.message })
+       );
+  } catch (error) {
+     res.status(400).json(error.message);
+     console.log(error);
+  }
+})
 
 //Update a user
 router.put("/update", isLoggedIn, async (req, res) => {

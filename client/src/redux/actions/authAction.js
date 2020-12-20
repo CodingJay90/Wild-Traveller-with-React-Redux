@@ -5,7 +5,7 @@ import {
   REGISTER_USER_FAIL,
   USER_LOADED,
   USER_LOADED_FAIL,
-  CLEAR_ERROR, UPDATE_USER, DELETE_USER
+  CLEAR_ERROR, UPDATE_USER, DELETE_USER, GET_SPECIFIC_USER, FETCH_LOADING
 } from "./actionTypes";
 
 export const registerUser = (user) => (dispatch) => {
@@ -83,6 +83,23 @@ export const loadUser = () => (dispatch, getState) => {
     });
 };
 
+export const getSpecificUser = (id) => (dispatch, getState) => {
+  dispatch({type: FETCH_LOADING})
+  fetch(`http://localhost:5000/auth/user/${id}`, {
+    headers: {
+      "Authorization": getState().auth.token
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    dispatch({
+      type: GET_SPECIFIC_USER,
+      payload: data.foundUser
+    })
+  })
+}
+
 export const clearError = () => dispatch => {
   dispatch({
     type: CLEAR_ERROR
@@ -120,16 +137,4 @@ export const deleteUser = () => (dispatch, getState) => {
     type: DELETE_USER
   }))
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

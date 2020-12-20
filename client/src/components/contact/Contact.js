@@ -1,6 +1,6 @@
 import React from "react";
 import "./Contact.css";
-import { FaBlogger, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
 import Footer from "../footer/Footer";
 
 const Contact = () => {

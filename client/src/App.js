@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./App.css";
 import Explore from "./components/explore/Explore";
@@ -12,9 +12,9 @@ import CreateForm from "./components/forms/locationForm/CreateForm";
 import Register from "./components/forms/auth/Register";
 import Login from "./components/forms/auth/Login";
 import { loadUser } from "./redux/actions/authAction";
-import ResponsiveNavbar from "./components/navbar/ResponsiveNavbar";
 import Contact from "./components/contact/Contact.js";
 import Profile from "./components/profile/Profile";
+import UserProfile from "./components/profile/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ function App() {
   }, [dispatch]);
   return (
     <BrowserRouter>
+    <Switch>
       <div className="App">
         <Navbar />
-        {/* <ResponsiveNavbar /> */}
         <Route path="/" exact component={Home} />
         <Route path="/explore" component={Explore} />
         <Route path="/details" component={LocationDetails} />
@@ -36,8 +36,10 @@ function App() {
         <Route path="/signup" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/contact" component={Contact} />
+        <Route path="/userProfile/:id" exact component={UserProfile} />
         <Route path="/profile" component={Profile} />
       </div>
+    </Switch>
     </BrowserRouter>
   );
 }

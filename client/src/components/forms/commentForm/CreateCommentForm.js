@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createComment, getSpecificComment, updateComment } from '../../../redux/actions/locationAction';
+import { createComment, updateComment } from '../../../redux/actions/locationAction';
 
 const CreateCommentForm = ( { item: {_id}, populateForm, comment_id } ) => {
   const [text, setText] = useState("");
@@ -32,7 +32,7 @@ const CreateCommentForm = ( { item: {_id}, populateForm, comment_id } ) => {
         setUpdateText(data.foundComment.text)
       }
     })
-  }, [populateForm])
+  }, [populateForm, _id, comment_id])
 
   return (
     <div className="comment-input">

@@ -13,7 +13,6 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../footer/Footer";
-import spinner from '../../spinner.svg'
 import { FaSpinner } from "react-icons/fa";
 
 
@@ -83,7 +82,7 @@ const Explore = (props) => {
             <div className="hero">
               <h1>Explore the world of Images</h1>
               <h2>
-                Add Your own Travel experience and let people know what they think about it
+                Share Your Travel experience and let people know what they think about it
               </h2>
               <h3>Start by adding your Location</h3>
               <Link className="btn btn-outline-warning" to="/create">
