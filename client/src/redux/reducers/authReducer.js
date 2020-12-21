@@ -1,7 +1,7 @@
 import {
   CLEAR_ERROR,
   DELETE_USER,
-  FETCH_LOADING,
+  USER_LOADING,
   GET_SPECIFIC_USER,
   LOGIN_USER,
   LOGIN_USER_FAIL,
@@ -65,7 +65,7 @@ export default function (state = initialState, action) {
         currentUser: action.payload,
       };
     }
-    case FETCH_LOADING:
+    case USER_LOADING:
       return {
         ...state,
         isLoading: true,

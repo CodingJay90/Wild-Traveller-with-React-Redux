@@ -76,6 +76,7 @@
     margin: 10px auto;
     border: 1px solid #fffffff8;
     background: transparent;
+    border-radius: 10px;
 }
 
 .contact-form form {
