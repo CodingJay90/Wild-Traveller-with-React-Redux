@@ -10,7 +10,7 @@ import {
   SORT_LOCATION_BY_NAME,
   SORT_LOCATION_BY_DATE_CREATED, DELETE_COMMENT, FETCH_SPECIFIC_COMMENT, UPDATE_COMMENT
 } from "./actionTypes";
-const baseUrl = "http://localhost:5000/location";
+const baseUrl = "/location";
 
 export const getLocations = () => (dispatch, getState) => {
   dispatch(setItemsLoading());

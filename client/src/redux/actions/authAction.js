@@ -9,7 +9,7 @@ import {
 } from "./actionTypes";
 
 export const registerUser = (user) => (dispatch) => {
-  fetch("http://localhost:5000/auth/register", {
+  fetch("/auth/register", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -34,7 +34,7 @@ export const registerUser = (user) => (dispatch) => {
 };
 
 export const loginUser = (user) => (dispatch) => {
-  fetch("http://localhost:5000/auth/login", {
+  fetch("/auth/login", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -62,7 +62,7 @@ export const loginUser = (user) => (dispatch) => {
 };
 
 export const loadUser = () => (dispatch, getState) => {
-  fetch("http://localhost:5000/auth/user", {
+  fetch("/auth/user", {
     headers: {
       Authorization: getState().auth.token,
     },
@@ -85,7 +85,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 export const getSpecificUser = (id) => (dispatch, getState) => {
   dispatch({type: FETCH_LOADING})
-  fetch(`http://localhost:5000/auth/user/${id}`, {
+  fetch(`/auth/user/${id}`, {
     headers: {
       "Authorization": getState().auth.token
     }
@@ -107,7 +107,7 @@ export const clearError = () => dispatch => {
 }
 
 export const updateUser = (data) => (dispatch, getState) => {
-  fetch("http://localhost:5000/auth/update", {
+  fetch("/auth/update", {
     method: 'PUT',
     body: JSON.stringify(data),
     headers: {
@@ -127,7 +127,7 @@ export const updateUser = (data) => (dispatch, getState) => {
 }
 
 export const deleteUser = () => (dispatch, getState) => {
-  fetch("http://localhost:5000/auth/delete", {
+  fetch("/auth/delete", {
     method: 'DELETE',
     headers: {
       "Authorization": getState().auth.token

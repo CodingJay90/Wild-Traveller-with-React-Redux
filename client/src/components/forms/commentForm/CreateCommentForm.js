@@ -24,7 +24,7 @@ const CreateCommentForm = ( { item: {_id}, populateForm, comment_id } ) => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/location/${_id}/comment/${comment_id}`)
+    fetch(`/location/${_id}/comment/${comment_id}`)
     .then(res => res.json())
     .then(data => {
       console.log(data)
