@@ -1,5 +1,5 @@
 const isLoggedIn = require("../middleware/isLoggedIn");
-const Location = require("../models/Location");
+const Location = require("../models/location");
 
 const router = require("express").Router();
 
