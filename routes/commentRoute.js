@@ -1,7 +1,7 @@
 const router = require("express").Router({ mergeParams: true });
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Comment = require("../models/comment");
-const Location = require("../models/Location");
+const Location = require("../models/location");
 const User = require("../models/user")
 
 //COMMENT CREATE
