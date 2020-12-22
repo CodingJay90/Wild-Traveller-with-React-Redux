@@ -20,14 +20,18 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
+const CONNECTION_URL =
+  "mongodb+srv://CodingJay90:Farmanimals1@cluster0.sdunn.mongodb.net/wild_traveller?retryWrites=true&w=majority";
+
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/wild_traveller_project_2", {
+  .connect(CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
   })
-  .then(() => console.log("Mongodb connected successfully"));
+  .then(() => console.log("Mongodb connected successfully"))
+  .catch(err => console.log(err));
 
 //Import Routes
 const locationRoute = require('./routes/locationRoute')
